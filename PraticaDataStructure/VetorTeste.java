@@ -22,7 +22,7 @@ public class VetorTeste{
         // System.out.println(x);
 
         lista.adiciona(0, a1);
-        lista.adiciona(1, a2);
+        lista.adiciona(0, a2);
         lista.adiciona(0, a3); //colocando o numero no qual quer q a pessoa esteja, ela ira ficar, e os outros aluno ira passar para frente 
         System.out.println(lista);
 

@@ -15,7 +15,7 @@ public class Alunos{
         return outro.getNome().equals(this.nome);
     }
     
-@Override
+@Override // anotation -> avisa o desenvolvedor e o compilador que esse método será sobreposto
     public String toString() { //retorna o nome do aluno
         return nome;
      }

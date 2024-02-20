@@ -8,6 +8,4 @@ class Fila{
     dequeue(){
         return this.fila.shift(); //remove o primeiro elemento da fila
     }
-
-
 }
