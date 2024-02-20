@@ -3,10 +3,11 @@
 import java.util.Arrays;
 
 public class Vetor{
-    private Alunos[] alunos = new Alunos[100];
+    private Alunos[] alunos = new Alunos[100]; //arrays não sao redimensionais, se caso queira aumentar seu tamanho, terá que criar um outro vetor 
     private int totalDeAlunos = 0; //variavel usada parra controle de alunos inseridos no array
 
     public void adiciona(int posicao, Alunos aluno){
+        this.novoArray(); //chama o método novoArray
         if(!posicaoValida(posicao)) {
             throw new IllegalArgumentException("posicao invalida"); //necessario validação de posição
         }
@@ -15,6 +16,7 @@ public class Vetor{
         }
         alunos[posicao] = aluno;
         totalDeAlunos++;
+
         //redecer o aluno na primeira posição vazia
         // for(int i = 0; i < alunos.length; i++) {
         //     if(alunos[i] == null) {
@@ -24,6 +26,12 @@ public class Vetor{
         // }
     }
 
+    public void adiciona(Alunos alunos) { //método adiciona faz com que novos alunos entre na lista do novo array criado
+        this.novoArray(); 
+        this.alunos[totalDeAlunos] = alunos;
+        totalDeAlunos++;
+    }
+
     public Alunos saberPosAlun(int posicao){ //cada metodo sempre precisa retornar algo
        if (!posicaoOcupada(posicao)){
         throw new IllegalArgumentException("posiçao invalida");
@@ -31,9 +39,12 @@ public class Vetor{
        return alunos[posicao];
     }
 
-
     public void remove(int posicao){
-        //remove pela posicao
+        //remove aluno n e empurramos para a esquerda todos aqueles que vinham depois dele
+        for (int i = posicao; i < this.totalDeAlunos; i++){
+            this.alunos[i] = this.alunos[i + 1];
+        }
+        totalDeAlunos--; //decrementa o total de alunos
     }
     
     public boolean contem(Alunos aluno){ //vamos implementar o método "contem". Queremos "perguntar" para a lista se um aluno específico está ou não nela.
@@ -55,13 +66,21 @@ public class Vetor{
         return Arrays.toString(alunos);
     }
 
-    private boolean posicaoOcupada(int posicao) {
+    private boolean posicaoOcupada(int posicao) { //o tipo de modificação é private pois o método é usado apenas dentro da classe, e não é modificado pelo usuário
         return posicao >= 0 && posicao < totalDeAlunos; //verifica posicao ocupada 
     }
 
-    private boolean posicaoValida(int posicao) {
+    private boolean posicaoValida(int posicao) { //o tipo de modificação é private pois o método é usado apenas dentro da classe, e não é modificado pelo usuário
         return posicao >= 0 && posicao <= totalDeAlunos;
     }
 
-
+    private void novoArray(){
+        if (totalDeAlunos == alunos.length){
+            Alunos[] novoArray2 = new Alunos[alunos.length*2]; //aqui ele ira criar um lovo array e dobrar seu tamanho
+            for (int i = 0; i < alunos.length; i++){
+                novoArray2[i] = alunos[i]; //alunos do antigo array ira ser atribuido ao novo array
+            }
+            this.alunos = novoArray2; //o novo array ira ser atribuido ao antigo array
+        }
+    }
 }
