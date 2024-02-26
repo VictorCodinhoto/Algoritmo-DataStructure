@@ -10,7 +10,7 @@ public class MeuVetor{
     public int getUltimaPos(){
         return ultimaPos;
     }
-    public int[] getV(){ //vetor é uma referencia 
+    public int[] getV(){ //vetor é uma referencia = ponteiro 
         return v;
     }
     //métodos modificadores 
@@ -41,13 +41,43 @@ public class MeuVetor{
         ultimaPos = -1;
     }
 
-    public boolean adicionado(int elemento){
-        if (estaCheio())
-            return false;
-        ultimaPos++;
-        v[ultimaPos] = elemento;
-        return true;
+    // public boolean adicionado(int elemento){
+    //     if (estaCheio())
+    //         return false;
+    //     ultimaPos++;
+    //     v[ultimaPos] = elemento;
+    //     return true;
+    // }
+
+    public void adicionado(int elemento){
+        if (estaCheio()) {
+            redimensiona(v.length*2);
+            int[] temp = new int[v.length*2];
+            for (int i = 0; i <= ultimaPos; i++){
+                temp[i] = v[i];
+            }
+            v = temp;
+        }        
+        v[++ultimaPos] = elemento;
     }
+
+    public int removeElemento(){
+        if (estaCheio()) return 0; //este return pode ser nao alcançavel
+        int aux = v[ultimaPos--];
+        if (v.length>=10 && ultimaPos <= v.length/4){ //aqui  este vetor não deixa ele ficar menor que 10, pois ele precisa de um numero minimo para poder ser redimensionado 
+            redimensiona(v.length/2);
+        }
+        return aux;
+    }
+
+    private void redimensiona(int novaCapacidade){
+        int[] temp = new int[novaCapacidade];
+            for (int i = 0; i <= ultimaPos; i++){
+                temp[i] = v[i];
+        }
+        v = temp;
+    }
+
     @Override
     public String toString(){
         String s="";
