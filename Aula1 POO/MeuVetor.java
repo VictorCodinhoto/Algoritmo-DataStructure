@@ -1,16 +1,18 @@
+import java.util.Random;
+
 public class MeuVetor{
-    private int[] v;
+    private double[] v;
     private int ultimaPos;
 
     public MeuVetor (int capacidade){
-        v = new int[capacidade];//array criado 
+        v = new double[capacidade];//array criado 
         ultimaPos = -1; //incializacao dele começa com -1
     }
     //métodos de acesso 
     public int getUltimaPos(){
         return ultimaPos;
     }
-    public int[] getV(){ //vetor é uma referencia = ponteiro 
+    public double[] getV(){ //vetor é uma referencia = ponteiro 
         return v;
     }
     //métodos modificadores 
@@ -52,18 +54,20 @@ public class MeuVetor{
     public void adicionado(int elemento){
         if (estaCheio()) {
             redimensiona(v.length*2);
-            int[] temp = new int[v.length*2];
-            for (int i = 0; i <= ultimaPos; i++){
-                temp[i] = v[i];
-            }
-            v = temp;
         }        
         v[++ultimaPos] = elemento;
     }
 
-    public int removeElemento(){
+    public void adicionado(double elemento){ //sobrecarga de método do adicionado
+        if (estaCheio()) {
+            redimensiona(v.length*2);
+        }        
+        v[++ultimaPos] = elemento;
+    }
+
+    public double removeElemento(){
         if (estaCheio()) return 0; //este return pode ser nao alcançavel
-        int aux = v[ultimaPos--];
+        Double aux = v[ultimaPos--];
         if (v.length>=10 && ultimaPos <= v.length/4){ //aqui  este vetor não deixa ele ficar menor que 10, pois ele precisa de um numero minimo para poder ser redimensionado 
             redimensiona(v.length/2);
         }
@@ -71,9 +75,9 @@ public class MeuVetor{
     }
 
     private void redimensiona(int novaCapacidade){
-        int[] temp = new int[novaCapacidade];
+        double[] temp = new double[novaCapacidade];
             for (int i = 0; i <= ultimaPos; i++){
-                temp[i] = v[i];
+                temp[i] = v[i]; //copia tudo para dentro da novo Array
         }
         v = temp;
     }
@@ -86,10 +90,20 @@ public class MeuVetor{
         }
         else{
             for (int i=0; i <= ultimaPos; i++){
-                s = s + v[i] + " ";
+                s = s + String.format("%.0f", v[i]) + " ";
             }
         }
         s = s + "\n";
         return s;
     }
+    public void preencheVetor(){
+        Random r = new Random();
+
+        for (int i = 0; i < v.length; i++){
+            adicionado(r.nextInt(60) + 1); //valores double
+        }
+    }
+
+    public 
+
 }

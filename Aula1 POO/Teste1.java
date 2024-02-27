@@ -18,12 +18,12 @@ public class Teste1{
         //     System.out.println("vetor esta cheio");
         // }
 
-        for (int n=1; n<=100; n++){
-            v1.adicionado(n);
-            System.out.println("n = " + n + ", tamanho do vetor = " + v1.getV().length);
-        }
+        // for (int n=1; n<=100; n++){
+        //     v1.adicionado(n);
+        //     System.out.println("n = " + n + ", tamanho do vetor = " + v1.getV().length);
+        // }
         while (!v1.estaVazio()){
-            System.out.println(v1.removeElemento() + "saiu da lista" + v1.getV().length);
+            System.out.println(v1.removeElemento() + "saiu da lista, capacidade" + " " + v1.getV().length);
         }
     }
 }
