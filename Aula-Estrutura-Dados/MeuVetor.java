@@ -124,4 +124,35 @@ public class MeuVetor{
         }
         return cont;
     }
+    public Retorno buscaSimples(double x){ //uma classe de retorno foi add para adicionar a incrementacao
+        Retorno retorno = new Retorno();
+        for (int i = 0; i<v.length; i++){
+            retorno.incrementaContador(); //toda vez que ele entra no laço, ele incrementa + 1 para ver se ele achou o valor
+            if(v[i] == x){ //vetor na posicao "i" for igual ao x(busca do método)
+                retorno.setAchou(true); //se caso encontrar elemento, retorna "true"
+                return retorno;
+            }
+        }
+        return retorno;
+    }
+    public Retorno buscaBinaria(double x){
+        Retorno retorno = new Retorno();
+        int inicio = 0;
+        int fim = v.length - 1;
+        int meio;
+        while(inicio <= fim){
+            meio = inicio + fim / 2;
+            retorno.incrementaContador();
+            if (x == v[meio]){
+                retorno.setAchou(true);
+            }
+            if(x > meio){
+                inicio = meio + 1;
+            }
+            else{
+                fim = meio - 1;
+            }
+        }
+        return retorno;
+    }
 }

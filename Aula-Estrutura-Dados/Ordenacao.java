@@ -12,17 +12,19 @@ public class Ordenacao { //classe responsavel por modificar os atributos
         while(tamanho>0){
             v1 = new MeuVetor(tamanho); //invoca o objeto meuvetor com tamanho definido pelo usuario
             v1.preencheVetor();
-            System.out.println("Vetor gerado:\n" + v1);
-            // long inicio = new Date().getTime();
-            int comparacoes = v1.Bubblesort(); //mesmo com a ordenacao dentro de uma variavel, ele ordena e não precisa ser chamado, mesmo guardado dentro de uma variavel
+            // System.out.println("Vetor gerado:\n" + v1);
+            long inicio = new Date().getTime();
+            // int comparacoes = v1.Bubblesort(); //mesmo com a ordenacao dentro de uma variavel, ele ordena e não precisa ser chamado, mesmo guardado dentro de uma variavel
             
-            // long fim = new Date().getTime();
+            long fim = new Date().getTime();
             System.out.println("vetor ordenado: " + v1);
             // System.out.println("tamanho: " + tamanho + ", comparacoes: " + comparacoes);
-            // System.out.println("tamanho: " + tamanho + "Demorou: " + (fim - inicio) + "ms");
+            System.out.println("tamanho: " + tamanho + " " + "Demorou: " + (fim - inicio) + "ms");
 
             System.out.print("digite o tamanho para o vetor, 0 encerra: ");
             tamanho = sc.nextInt();
+
+            
         }   
         sc.close();
     }
