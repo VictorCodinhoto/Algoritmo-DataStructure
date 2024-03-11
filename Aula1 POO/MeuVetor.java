@@ -58,7 +58,7 @@ public class MeuVetor{
         v[++ultimaPos] = elemento;
     }
 
-    public void adicionado(double elemento){ //sobrecarga de método do adicionado
+    public void adicionado(double elemento, int i){ //sobrecarga de método do adicionado
         if (estaCheio()) {
             redimensiona(v.length*2);
         }        
@@ -103,7 +103,4 @@ public class MeuVetor{
             adicionado(r.nextInt(60) + 1); //valores double
         }
     }
-
-    public 
-
 }

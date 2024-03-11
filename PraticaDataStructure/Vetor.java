@@ -12,7 +12,7 @@ public class Vetor{
             throw new IllegalArgumentException("posicao invalida"); //necessario validação de posição
         }
         for(int i = totalDeAlunos - 1; i >= posicao; i -= 1) {
-            alunos[i + 1] = alunos[i]; //vamos arrastar todos os alunos da terceira posição em diante para a direita e colocamos aquele aluno no buraco que ficou, como podemos observar na imagem a seguir:
+            alunos[i + 1] = alunos[i]; //vamos arrastar todos os alunos da terceira posição em diante para a direita e colocamos aquele aluno no buraco que ficou
         }
         alunos[posicao] = aluno;
         totalDeAlunos++;

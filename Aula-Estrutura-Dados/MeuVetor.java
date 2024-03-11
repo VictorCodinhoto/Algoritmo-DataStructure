@@ -60,11 +60,27 @@ public class MeuVetor{
 
     public void adicionado(double elemento){ //sobrecarga de método do adicionado
         if (estaCheio()) {
-            redimensiona(v.length*2);
+            redimensiona(v.length*2); //o redimensionamento acontece independente da pratica feita
         }        
         v[++ultimaPos] = elemento;
     }
-
+    public void adicionado(double elemento, int posicao){
+        if(estaCheio()){
+            redimensiona(v.length*2);
+        }
+        if(posicao > ultimaPos){
+            v[++ultimaPos] = elemento;
+        }
+        else{
+            int i;
+            for (i=ultimaPos-1; i>posicao-1; i--){
+                v[i] = v[i - 1]; 
+            }
+            v[i] = elemento; 
+            ultimaPos++; 
+        }
+        //precisa arrastar as posicoes do vetor
+    }
     public double removeElemento(){
         if (estaCheio()) return 0; //este return pode ser nao alcançavel
         Double aux = v[ultimaPos--];
@@ -73,7 +89,28 @@ public class MeuVetor{
         }
         return aux;
     }
-
+    public double removeElementoPosicao(int pos){
+        if (pos < 0 || estaVazio() || pos > ultimaPos) return 0;
+        double aux = v[pos];
+        for (int i = pos; i < ultimaPos; i++){ // se caso escolher a ultima posicao ele não irá precisar arrastar 
+            v[i] = v[i + 1];
+        }
+        ultimaPos--;
+            
+        if (v.length>=10 && ultimaPos <= v.length/4){ //aqui  este vetor não deixa ele ficar menor que 10, pois ele precisa de um numero minimo para poder ser redimensionado 
+            redimensiona(v.length/2);
+        }
+        return aux;
+    }
+    public boolean remove(double elemento){
+        //remove a primeira ocorrencia do elemento e devolve sucesso ou fracasso
+        for (int i = 0; i < ultimaPos; i++){
+            
+        }
+    }
+    public int removeALL(double elemento){
+        //remove todas as ocorrencias do elemento e devolve quantos foram removidos
+    }
     private void redimensiona(int novaCapacidade){
         double[] temp = new double[novaCapacidade];
             for (int i = 0; i <= ultimaPos; i++){
