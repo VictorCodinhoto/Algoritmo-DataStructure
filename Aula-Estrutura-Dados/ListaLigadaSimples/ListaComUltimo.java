@@ -4,7 +4,7 @@ public class ListaComUltimo extends Lista{
     public No getUltimo(){
         return ultimo;
     }
-    @Override //override pis vamos sobreescrever o método
+    @Override //override pois vamos sobreescrever o método
     public void insereFim(int i){
         No novo = new No(i);
         if (listaEstaVazia()){
