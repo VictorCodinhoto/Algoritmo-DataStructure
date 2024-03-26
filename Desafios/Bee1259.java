@@ -18,7 +18,8 @@ public class Bee1259 {
                 impares[nImpares++] = x;
             }
         }
-        //insertio sort
+        sc.close();
+        //insertio sort - ordenando pares
         for (int j =1; j < nPares; j++){
             int x = pares[j];
             int i;
@@ -27,6 +28,24 @@ public class Bee1259 {
             pares[i+1] = x;
             }
         }
-    sc.close();
+        //insertion sort - ordenando impares
+        for (int j =1; j < nImpares; j++){
+            int x = pares[j];
+            int i;
+            for(i = j -1; i>=0 && impares[i] < x; --i){ //comparacao é menor pois ocorrera de forma decrescente 
+                impares [i + 1] = impares[i];
+            impares[i+1] = x;
+            }
+        }
+        //saída
+        //primeiro os pares
+        for (int i = 0; i<nPares; i++){
+            System.out.println(pares[i]);
+        }
+        //saída 
+        //impares
+        for (int i = 0; i<nImpares; i++){
+            System.out.println(impares[i]);
+        }
     }
 }
