@@ -192,4 +192,13 @@ public class MeuVetor{
         }
         return retorno;
     }
+    public Retorno buscaMaior(){
+        Retorno retorno = new Retorno();
+        if(estaVazio()){
+            return retorno;
+        }else{
+            Bubblesort();
+            retorno.setAchou(v.length - 1);
+        }
+    }
 }

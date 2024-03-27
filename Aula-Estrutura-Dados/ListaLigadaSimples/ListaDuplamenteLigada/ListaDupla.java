@@ -52,6 +52,37 @@ public class ListaDupla {
         }
         return i;
     }
+    public int retornaMaior(){
+        boolean oMaior = false;
+        int maior = primeiro.getInfo();
+        NoDuplo aux = primeiro.getProximo();
+        while (oMaior == false) {
+            if(estaVazia()){
+                return 0;
+            }else{
+                if(aux.getInfo() > maior ){
+                    maior = aux.getInfo();
+                    if(aux.getProximo() == null){
+                        oMaior = true;
+                        return maior;
+                    
+                }
+
+            }
+        }
+
+
+
+            
+
+            
+            
+    }
+}
+    
+
+
+
     @Override
     public String toString(){
         String s = ""; 
